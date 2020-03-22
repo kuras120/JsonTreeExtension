@@ -63,15 +63,7 @@ class JTExt:
         data = {}
         for _ in range(elements):
             data[JTExt.random_string()] = {JTExt.random_string(): [JTExt.random_string() for _ in range(elements)],
-                                           JTExt.random_string(): {JTExt.random_string(): 5,
-                                                                   JTExt.random_string(): {JTExt.random_string(): 3,
-                                                                                           JTExt.random_string(): [5, 2, 7]}}}
+                                           JTExt.random_string(): {JTExt.random_string(): random.randrange(1, 100),
+                                                                   JTExt.random_string(): {JTExt.random_string(): random.randrange(1, 10),
+                                                                                           JTExt.random_string(): [random.randrange(1, 10) for _ in range(elements)]}}}
         return json.dumps(data)
-
-
-if __name__ == '__main__':
-    parser = JTExt()
-    prob = JTExt.generate_test_json()
-    print(prob)
-    tree = parser.parse_json(prob)
-    tree.show()
