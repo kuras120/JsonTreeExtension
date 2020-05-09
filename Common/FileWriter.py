@@ -14,10 +14,10 @@ class FileWriter:
 
     # parent, siblings (rodzenstwo), paths_to_leaves
     def write(self, tree: Tree):
-        nodes: List[Node] = tree.leaves('root')
-        print(nodes)
-        print(nodes[0])
-        parent: Node = tree.parent(nodes[0].identifier)
-        print(parent)
+        opened = open(self.__file, 'w+')
         paths: list = tree.paths_to_leaves()
-        print(paths)
+        for elem in paths:
+            node: Node = tree.get_node(elem[-1])
+            parent: Node = tree.get_node(elem[-2])
+            opened.write(parent.tag + ': ' + node.tag + '\n')
+        opened.close()
