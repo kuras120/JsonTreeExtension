@@ -5,12 +5,14 @@ from Core.JTExt import JTExt
 
 
 class JTExtUnitTest(unittest2.TestCase):
-    def test_parse_json(self):
+    def test_parse_json_basic(self):
         parser = JTExt()
-        tree: Tree = parser.parse_json({"test": "true", "test2": {"test3": "false", "test4": "true"}})
+        tree: Tree = parser.parse_json({"test": "true", "test2": {"test3": "false", "test4": ["true", "false", "true"]}})
         leaves: List = tree.paths_to_leaves()
         test_list: List = [["ROOT", "TEST", "TRUE"],
                            ["ROOT", "TEST2", "TEST3", "FALSE"],
+                           ["ROOT", "TEST2", "TEST4", "TRUE"],
+                           ["ROOT", "TEST2", "TEST4", "FALSE"],
                            ["ROOT", "TEST2", "TEST4", "TRUE"]]
         for i in range(len(test_list)):
             for j in range(len(test_list[i])):
