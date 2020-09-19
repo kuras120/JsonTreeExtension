@@ -3,7 +3,7 @@ import uuid
 import string
 import random
 from typing import TypeVar
-from treelib import Node, Tree
+from treelib import Tree
 
 JsonDictType = TypeVar('JsonDictType', dict, list, str)
 
@@ -15,12 +15,6 @@ class JTExt:
         else:
             self.__tree = Tree()
         self.__tree.create_node('ROOT', 'root')
-
-    def get_parent(self) -> Node:
-        pass
-
-    def get_children(self) -> list:
-        pass
 
     def parse_json(self, json_dict: JsonDictType, key: str = 'root') -> Tree:
         if isinstance(json_dict, str):
@@ -62,8 +56,14 @@ class JTExt:
     def generate_test_json(elements=3) -> str:
         data = {}
         for _ in range(elements):
-            data[JTExt.random_string()] = {JTExt.random_string(): [JTExt.random_string() for _ in range(elements)],
-                                           JTExt.random_string(): {JTExt.random_string(): random.randrange(1, 100),
-                                                                   JTExt.random_string(): {JTExt.random_string(): random.randrange(1, 10),
-                                                                                           JTExt.random_string(): [random.randrange(1, 10) for _ in range(elements)]}}}
+            data[JTExt.random_string()] = {
+                JTExt.random_string(): [JTExt.random_string() for _ in range(elements)],
+                JTExt.random_string(): {
+                    JTExt.random_string(): random.randrange(1, 100),
+                    JTExt.random_string(): {
+                        JTExt.random_string(): random.randrange(1, 10),
+                        JTExt.random_string(): [random.randrange(1, 10) for _ in range(elements)]
+                    }
+                }
+            }
         return json.dumps(data)
