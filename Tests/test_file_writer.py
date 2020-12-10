@@ -5,7 +5,7 @@ from Core.JTExt import JTExt
 from Common.FileWriter import FileWriter, FileMode
 
 
-class MyTestCase(unittest2.TestCase):
+class FileWriterUnitTest(unittest2.TestCase):
     def test_parser_basic(self):
         parser = JTExt()
         tree: Tree = parser.parse_json({"test": "true", "test2": {"test3": "false", "test4": ["true", "false", "true"]}})
