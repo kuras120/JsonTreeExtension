@@ -1,10 +1,10 @@
-import unittest2
+import unittest
 from typing import List
 from treelib import Tree
 from Core.JTExt import JTExt
 
 
-class JTExtUnitTest(unittest2.TestCase):
+class JTExtUnitTest(unittest.TestCase):
     def test_parse_json_basic(self):
         parser = JTExt()
         tree: Tree = parser.parse_json({"test": "true", "test2": {"test3": "false", "test4": ["true", "false", "true"]}})
@@ -20,4 +20,4 @@ class JTExtUnitTest(unittest2.TestCase):
 
 
 if __name__ == '__main__':
-    unittest2.main()
+    unittest.main()

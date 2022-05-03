@@ -1,3 +1,2 @@
 jsontree
 treelib
-unittest2
